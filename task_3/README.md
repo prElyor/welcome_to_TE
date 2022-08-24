@@ -1,3 +1,5 @@
+# <a href="https://codesandbox.io/s/task-3-forked-kcjqnu?file=/src/taskComponents.tsx">Ссылка на результат (codesandbox)</a>
+
 # Task 3
 
 ## Описание📌
