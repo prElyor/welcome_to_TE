@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, memo, PureComponent } from 'react';
 
 type IUser = {
     name: string
@@ -9,22 +9,29 @@ type IProps = {
     user: IUser
 }
 
-// functional component
-const FirstComponent = ({ name, age }: IUser) => (
-    <div>
-        my name is {name}, my age is {age}
-    </div>
-);
+function areEqual(prevProps: any, nextProps: any) {
+    // Самый простой способ сравнивать объекты, массивы это через JSON.stringify()
+    // хотя этот способ не рекомендуют в официальной документации
+    // Можно было сравнивать prevProps.user.name === nextProps.user.name и т.д.
+    return JSON.stringify(prevProps) === JSON.stringify(nextProps);
+}
 
 // functional component
-const SecondComponent = ({ user: { name, age } }: IProps) => (
+const FirstComponent = memo(({ name, age }: IUser) => (
     <div>
         my name is {name}, my age is {age}
     </div>
-);
+));
+
+// functional component
+const SecondComponent = memo(({ user: { name, age } }: IProps) => (
+    <div>
+        my name is {name}, my age is {age}
+    </div>
+), areEqual);
 
 // class component
-class ThirdComponent extends Component<IUser> {
+class ThirdComponent extends PureComponent<IUser> {
     render() {
         return (
             <div>
@@ -36,6 +43,11 @@ class ThirdComponent extends Component<IUser> {
 
 // class component
 class FourthComponent extends Component<IProps> {
+
+    shouldComponentUpdate(nextProps) {
+        return !areEqual(this.props, nextProps);
+    }
+
     render() {
         return (
             <div>

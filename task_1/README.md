@@ -1,3 +1,5 @@
+# <a href="https://codesandbox.io/s/task-1-forked-qmrsge?file=/src/taskComponents.tsx">Ссылка на результат (codesandbox)</a>
+
 # Task 1
 
 ## Описание📌
