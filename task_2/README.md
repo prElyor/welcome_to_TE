@@ -1,3 +1,5 @@
+# <a href="https://codesandbox.io/s/task-2-forked-6p218j?file=/src/taskComponents.tsx">Ссылка на результат (codesandbox)</a>
+
 # Task 2
 
 ## Описание📌
